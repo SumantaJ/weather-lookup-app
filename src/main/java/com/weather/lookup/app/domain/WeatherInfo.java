@@ -1,9 +1,13 @@
 package com.weather.lookup.app.domain;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -18,6 +22,11 @@ public class WeatherInfo {
 	private double temp;
 	private int pressure;
 	private boolean umbrella;
+	@JsonIgnore
+	private String city;
+	@CreationTimestamp
+	@JsonIgnore
+    private LocalDateTime created;
 
 	public Long getId() {
 		return id;
@@ -51,9 +60,26 @@ public class WeatherInfo {
 		this.umbrella = umbrella;
 	}
 
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+	public LocalDateTime getCreated() {
+		return created;
+	}
+
+	public void setCreated(LocalDateTime created) {
+		this.created = created;
+	}
+
 	@Override
 	public String toString() {
-		return "WeatherInfo [id=" + id + ", temp=" + temp + ", pressure=" + pressure + ", umbrella=" + umbrella + "]";
+		return "WeatherInfo [id=" + id + ", temp=" + temp + ", pressure=" + pressure + ", umbrella=" + umbrella
+				+ ", city=" + city + ", created=" + created + "]";
 	}
 
 }

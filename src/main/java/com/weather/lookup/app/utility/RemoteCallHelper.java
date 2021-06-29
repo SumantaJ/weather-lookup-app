@@ -10,7 +10,11 @@ public class RemoteCallHelper {
 	@Value("${api.key}")
 	private String apiKey;
 
-	WebClient webClient = WebClient.create(Constants.WEATHER_API_URL);
+	private final WebClient webClient;
+
+	public RemoteCallHelper() {
+		this.webClient = WebClient.builder().baseUrl(Constants.WEATHER_API_URL).build();
+	}
 
 	public String getWeatherInfo(String cityName) {
 		return webClient.get()
