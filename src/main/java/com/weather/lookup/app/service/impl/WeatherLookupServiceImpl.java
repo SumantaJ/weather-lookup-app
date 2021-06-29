@@ -24,7 +24,6 @@ public class WeatherLookupServiceImpl implements WeatherLookupService {
 		String response = remoteCallHelper.getWeatherInfo(cityName);
 		checkResponseStatus(response);
 
-		System.out.println(response);
 		return getWeatherInfo(response);
 	}
 
@@ -60,5 +59,4 @@ public class WeatherLookupServiceImpl implements WeatherLookupService {
 	private void checkUmbrellaRequired(WeatherInfo info,String value) {
 		info.setUmbrella(WeatherTypeEnum.fromValue(value));
 	}
-
 }

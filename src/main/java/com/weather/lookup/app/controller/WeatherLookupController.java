@@ -40,7 +40,6 @@ public class WeatherLookupController {
 		WeatherInfo weatherInfo;
 		try {
 			weatherInfo = weatherLookupService.getCurrentWeatherInfo(cityName.trim());
-
 		} catch (Exception e) {
 			throw new IllegalArgumentException(e.getMessage());
 		}
