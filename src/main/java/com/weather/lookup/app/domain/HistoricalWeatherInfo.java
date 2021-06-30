@@ -8,6 +8,13 @@ public class HistoricalWeatherInfo {
 	private double avg_temp;
 	private double avg_pressure;
 	private List<WeatherInfo> history = new ArrayList<>();
+	
+	public HistoricalWeatherInfo(double avg_temp, double avg_pressure, List<WeatherInfo> history) {
+		super();
+		this.avg_temp = avg_temp;
+		this.avg_pressure = avg_pressure;
+		this.history = history;
+	}
 
 	public double getAvg_temp() {
 		return avg_temp;

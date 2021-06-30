@@ -28,6 +28,14 @@ public class WeatherInfo {
 	@CreationTimestamp
 	@JsonIgnore
     private LocalDateTime created;
+	
+	public WeatherInfo(double temp, int pressure, boolean umbrella, String city) {
+		super();
+		this.temp = temp;
+		this.pressure = pressure;
+		this.umbrella = umbrella;
+		this.city = city;
+	}
 
 	public Long getId() {
 		return id;
