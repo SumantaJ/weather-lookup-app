@@ -16,6 +16,9 @@ public class HistoricalWeatherInfo {
 		this.history = history;
 	}
 
+	public HistoricalWeatherInfo() {
+	}
+
 	public double getAvg_temp() {
 		return avg_temp;
 	}

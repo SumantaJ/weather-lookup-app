@@ -37,6 +37,9 @@ public class WeatherInfo {
 		this.city = city;
 	}
 
+	public WeatherInfo() {
+	}
+
 	public Long getId() {
 		return id;
 	}
