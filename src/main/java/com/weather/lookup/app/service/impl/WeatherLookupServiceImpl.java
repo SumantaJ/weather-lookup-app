@@ -1,5 +1,8 @@
 package com.weather.lookup.app.service.impl;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,17 +47,20 @@ public class WeatherLookupServiceImpl implements WeatherLookupService {
 		List<WeatherInfo> weatherHistory = weatherLookupRepository
 				.findFirst5ByCityContainingOrderByCreatedDesc(cityName);
 
-		if (weatherHistory.size() != 0) {
+		if (!weatherHistory.isEmpty()) {
 			historicalInfo = new HistoricalWeatherInfo();
+			NumberFormat nf= NumberFormat.getInstance();
+	        nf.setMaximumFractionDigits(2);
 
 			double averageTemp = weatherHistory.stream().collect(Collectors.averagingDouble(WeatherInfo::getTemp));
 
 			double averagePressure = weatherHistory.stream()
 					.collect(Collectors.averagingInt(WeatherInfo::getPressure));
 
-			historicalInfo.setAvg_temp(averageTemp);
-			historicalInfo.setAvg_pressure(averagePressure);
+			historicalInfo.setAvg_temp(new BigDecimal(averageTemp).setScale(2,RoundingMode.HALF_DOWN).doubleValue());
+			historicalInfo.setAvg_pressure(new BigDecimal(averagePressure).setScale(2,RoundingMode.HALF_DOWN).doubleValue());
 			historicalInfo.setHistory(weatherHistory);
+
 		}
 
 		return historicalInfo;

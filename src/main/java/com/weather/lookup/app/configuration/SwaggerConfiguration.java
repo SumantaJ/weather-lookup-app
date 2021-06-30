@@ -16,19 +16,19 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class SwaggerConfiguration extends WebMvcConfigurationSupport{
 	
-	@Value("${swagger.api.title}")
+	@Value("${swagger.api.title:}")
     private String title;
 
-    @Value("${swagger.api.description}")
+    @Value("${swagger.api.description:}")
     private String description;
 
-    @Value("${swagger.api.version}")
+    @Value("${swagger.api.version:}")
     private String version;
 
-    @Value("${swagger.api.controller.basepackage}")
+    @Value("${swagger.api.controller.basepackage:}")
     private String basePackage;
     
-    @Value("${swagger.ui.html.name}")
+    @Value("${swagger.ui.html.name:}")
     private String htmlTemplate;
     
 	@Bean
