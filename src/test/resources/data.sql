@@ -5,4 +5,5 @@ INSERT INTO weatherinfo (TEMP,PRESSURE,UMBRELLA,CITY)VALUES
   (13.9, 1233, false, 'London,uk'),
   (13.7, 1239, true, 'Berlin'),
   (16.5, 1287, true, 'London,uk'),
-  (19.5, 1234, false, 'Berlin,de');
+  (19.5, 1234, false, 'Berlin,de'),
+  (19.7, 1234, false, 'London,uk');
