@@ -7,5 +7,5 @@ public interface WeatherLookupService {
 	
 	WeatherInfo getCurrentWeatherInfo(String cityName) throws Exception;
 
-	HistoricalWeatherInfo getHistoricalWeatherInfo(String cityName);
+	HistoricalWeatherInfo getHistoricalWeatherInfo(String cityName) throws Exception;
 }

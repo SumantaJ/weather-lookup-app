@@ -31,12 +31,16 @@ public class WeatherLookupServiceImpl implements WeatherLookupService {
 
 		String response = remoteCallHelper.getWeatherInfo(cityName);
 		JsonParsingUtility.checkResponseStatus(response);
-
-		return weatherLookupRepository.save(JsonParsingUtility.getWeatherInfo(response, cityName));
+		
+		WeatherInfo weatherInfo = JsonParsingUtility.getWeatherInfo(response, cityName);
+		
+		weatherLookupRepository.save(weatherInfo);
+		
+		return weatherInfo;
 	}
 
 	@Override
-	public HistoricalWeatherInfo getHistoricalWeatherInfo(String cityName) {
+	public HistoricalWeatherInfo getHistoricalWeatherInfo(String cityName) throws Exception {
 
 		if (cityName.contains(Constants.COMMA)) {
 			String[] twoStringArray = cityName.split(Constants.COMMA, 2);
@@ -61,6 +65,8 @@ public class WeatherLookupServiceImpl implements WeatherLookupService {
 			historicalInfo.setAvg_pressure(new BigDecimal(averagePressure).setScale(2,RoundingMode.HALF_DOWN).doubleValue());
 			historicalInfo.setHistory(weatherHistory);
 
+		}else {
+			throw new Exception(Constants.MESSAGE_CITY_NAME_DOES_NOT_HAVE_HISTORY);
 		}
 
 		return historicalInfo;

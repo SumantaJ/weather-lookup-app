@@ -11,6 +11,7 @@ public class Constants {
 	
 	//Exception message
 	public static final String MESSAGE_INVALID_CITY_NAME = "Please provide valid city name";
+	public static final String MESSAGE_CITY_NAME_DOES_NOT_HAVE_HISTORY = "No search history exist for this city";
 	
 	//Json Tags
 	public static final String JSON_TAG_COD = "cod";
