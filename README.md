@@ -49,17 +49,17 @@ To implement the  Weather Lookup App, I have selected following Tools
 ### Run the following SpringBootApplication as Maven Project From CLI:
 
 - Run this command from root project
-  >mvn clean install
+   >mvn clean install
 
 - Once the above command execution gets completed, run below mentioned command to run the application:
-  >mvn spring-boot:run
+   >mvn spring-boot:run
 
 This will run the application in http://localhost:8090/
 
 Note: We can change port 8090 to any desired port on src/main/resources --> application.properties (server.port)
 
 ### Run the Integration and Junit Test From CLI:
-  >mvn clean test
+   >mvn clean test
 
 ### Swagger documentation:
 
