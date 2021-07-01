@@ -20,12 +20,12 @@ We have a weather data service that provides a bunch of information. We want to 
 
 ### Solution
 
-## Pre Requisite
+## Prerequisite
 
 This application uses [https://openweathermap.org/api](https://openweathermap.org/api) to access weather info. An API Key needed to generated in order to access current weather info. Once the API key is generated, please paste the API key value in the following locations :
 
-- 1) {root}/src/main/resources -> application.properties --> api.key
-- 2) {root}/src/test/resources -> application.properties --> api.key
+- {root}/src/main/resources -> application.properties --> api.key
+- {root}/src/test/resources -> application.properties --> api.key
 
 ## Tools
 To implement the  Weather Lookup App, I have selected following Tools
@@ -73,7 +73,7 @@ Note: We can change port 8090 to any desired port on src/main/resources --> appl
 
 - Example : GET http://localhost:8090/weatherlookup/current?location=London,uk
 
-##Thoughts On Application Design:
+## Thoughts On Application Design:
 
 1) I have used H2 Database in order to get the historical search info due to time constrain and quick development. Though my choice of DB for this purpose would be Postgres because of fast retrieval speed. NoSQL like MongoDB can also be considered as this dataset does not requires to many defined relationships.
 
@@ -85,7 +85,7 @@ Note: We can change port 8090 to any desired port on src/main/resources --> appl
 
 5) application.resources file of test is being used to separate out test properties. I have used H2 In Memory DB for doing integration testing of the endpoint. Api key in is also being used in test for the same purpose.
 
-##Thoughts On CI/CD Multi Environment Deployment
+## Thoughts On CI/CD Multi Environment Deployment
 
 **Components:**
  - Jenkins / Circle CI
@@ -93,7 +93,7 @@ Note: We can change port 8090 to any desired port on src/main/resources --> appl
  - AWS RDS
  - Terraform
 
-#For CI
+# CI
 - We can implement jenkins/circle CI pipeline which will consist of stages:
 
  - Run compile with JUnits
@@ -102,7 +102,7 @@ Note: We can change port 8090 to any desired port on src/main/resources --> appl
  - Run Postman Automation For Functional Testing
  - Once every stages passes, It will trigger terraform based deployment in DEV
 
-#For CD
+# CD
 
 - Terraform will be having multiple defined AWS environment info, Example: AWS EB, AWS RDS.
 
