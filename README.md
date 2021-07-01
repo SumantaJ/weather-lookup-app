@@ -18,16 +18,16 @@ We have a weather data service that provides a bunch of information. We want to 
     - a boolean whether to take an umbrella (`true`) or not (`false`)
 - The micro service should provide an HTTP API takes a city name in the form of e.g. `Berlin` or `Berlin,de` and returns the historical data as well as an average over the last 5 queries for the same city
 
-### Solution
+#### Solution
 
-### Prerequisite
+### Prerequisite:
 
 This application uses [https://openweathermap.org/api](https://openweathermap.org/api) to access weather info. An API Key needed to generated in order to access current weather info. Once the API key is generated, please paste the API key value in the following locations :
 
 - {root}/src/main/resources -> application.properties --> api.key
 - {root}/src/test/resources -> application.properties --> api.key
 
-### Tools
+### Tools:
 To implement the  Weather Lookup App, I have selected following Tools
 
 - JDK 1.8
@@ -37,7 +37,7 @@ To implement the  Weather Lookup App, I have selected following Tools
 - Embeded Tomcat with SpringBoot framework
 - JUnit Test SpringBoot Test - MockMvc, MociktoJunitRunner, SpringBootTest etc
 
-### Database Configuration
+### Database Configuration:
 
 - H2 DB Configuration can be found or modified in application.properties under {root} -> src/main/resources
 - Once Application Starts Running, H2 DB Console can be found at http://localhost:8090/h2-console/
@@ -46,30 +46,30 @@ To implement the  Weather Lookup App, I have selected following Tools
       - username: sa
       - password: password
 
-### Run the following SpringBootApplication as Maven Project From CLI
+### Run the following SpringBootApplication as Maven Project From CLI:
 
 - Run this command from root project
-  **>mvn clean install**
+  >mvn clean install
 
 - Once the above command execution gets completed, run below mentioned command to run the application:
-  **>mvn spring-boot:run**
+  >mvn spring-boot:run
 
 This will run the application in http://localhost:8090/
 
 Note: We can change port 8090 to any desired port on src/main/resources --> application.properties (server.port)
 
-### Run the Integration and Junit Test From CLI
-  **>mvn clean test**
+### Run the Integration and Junit Test From CLI:
+  >mvn clean test
 
-### Swagger documentation
+### Swagger documentation:
 
 - Swagger documentation of api is available at http://localhost:8090/swagger-ui.html#/
 
-### Health Check Endpoint
+### Health Check Endpoint:
 
 - Spring actuator health check endpoint is available at http://localhost:8090/actuator/health (GET)
 
-### Download Postman or Google Browser to verify the REST APIS
+### Download Postman or Google Browser to verify the REST APIS:
 
 - Example : GET http://localhost:8090/weatherlookup/current?location=London,uk
 
@@ -85,7 +85,7 @@ Note: We can change port 8090 to any desired port on src/main/resources --> appl
 
 5) application.resources file of test is being used to separate out test properties. I have used H2 In Memory DB for doing integration testing of the endpoint. Api key in is also being used in test for the same purpose.
 
-### Thoughts On CI/CD Multi Environment Deployment
+### Thoughts On CI/CD Multi Environment Deployment:
 
 **Components:**
  - Jenkins / Circle CI
@@ -93,7 +93,7 @@ Note: We can change port 8090 to any desired port on src/main/resources --> appl
  - AWS RDS
  - Terraform
 
-## CI
+## CI:
 - We can implement jenkins/circle CI pipeline which will consist of stages:
 
  - Run compile with JUnits
@@ -107,5 +107,6 @@ Note: We can change port 8090 to any desired port on src/main/resources --> appl
  - Terraform will be having multiple defined AWS environment info, Example: AWS EB, AWS RDS.
  - Once terraform triggers, It will deploy the jar from artifactory to AWS EB.
  - AWS EB will be having our application health check endpoint integrated to check the readiness.
+
 
  Once Testing completes in DEV, we can proceed for QA and PROD by triggering terraform for respective environment.
