@@ -18,7 +18,7 @@ We have a weather data service that provides a bunch of information. We want to 
     - a boolean whether to take an umbrella (`true`) or not (`false`)
 - The micro service should provide an HTTP API takes a city name in the form of e.g. `Berlin` or `Berlin,de` and returns the historical data as well as an average over the last 5 queries for the same city
 
-#### Solution
+## Solution
 
 ### Prerequisite:
 
@@ -93,7 +93,7 @@ Note: We can change port 8090 to any desired port on src/main/resources --> appl
  - AWS RDS
  - Terraform
 
-## CI:
+#### CI:
 - We can implement jenkins/circle CI pipeline which will consist of stages:
 
  - Run compile with JUnits
@@ -102,7 +102,7 @@ Note: We can change port 8090 to any desired port on src/main/resources --> appl
  - Run Postman Automation For Functional Testing
  - Once every stages passes, It will trigger terraform based deployment in DEV
 
-## CD
+#### CD:
 
  - Terraform will be having multiple defined AWS environment info, Example: AWS EB, AWS RDS.
  - Once terraform triggers, It will deploy the jar from artifactory to AWS EB.
