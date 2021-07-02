@@ -88,25 +88,33 @@ Note: We can change port 8090 to any desired port on src/main/resources --> appl
 ### Thoughts On CI/CD Multi Environment Deployment:
 
 **Components:**
- - Jenkins / Circle CI
- - AWS EB
+ - Jenkins / Circle CI / AWS CodeBuild
+ - AWS EB / AWS EKS
  - AWS RDS
  - Terraform
+ - Spinnaker / AWS CodePipeline
 
 #### CI:
-- We can implement jenkins/circle CI pipeline which will consist of stages:
+- We can implement Jenkins/AWS CodeBuild pipeline which will consist of stages:
 
  - Run compile with JUnits
  - Run Integration Test
- - Package and Store in Artifactory
+ - Package and Store in Artifactory as docker image/jar
  - Run Postman Automation For Functional Testing
  - Once every stages passes, It will trigger terraform based deployment in DEV
 
 #### CD:
 
- - Terraform will be having multiple defined AWS environment info, Example: AWS EB, AWS RDS.
- - Once terraform triggers, It will deploy the jar from artifactory to AWS EB.
+##### Approach 1:
+
+ - Terraform will be having multiple defined AWS environment info, Example: AWS EKS, AWS RDS, AWS S3.
+ - Spinnaker pipeline setup which will deploy it to AWS EKS for DEV.
+ - AWS EKS container will be running our application health check endpoint integrated to check the readiness.
+
+##### Approach 2:
+
+ - Terraform will be having multiple defined AWS environment info, Example: For AWS EB, AWS RDS, AWS S3.
+ - Triggering Terraform based deployment using AWS CodePipeline to deploy jar/docker image to AWS EB.
  - AWS EB will be having our application health check endpoint integrated to check the readiness.
 
-
- Once Testing completes in DEV, we can proceed for QA and PROD by triggering terraform for respective environment.
+ Once Testing completes in DEV, we can proceed for QA and PROD by triggering Spinnaker/CodePipeline for respective environments.
